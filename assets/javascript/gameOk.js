@@ -14,58 +14,76 @@ firebase.initializeApp(config);
   
 var database = firebase.database();
 var playersOnLine = database.ref("/players");
-var playerOneGame = false;
-var playerTwoGame = false;
+var playerOneReady = false;
+var playerTwoReady = false;
+var evaluatePlayerOne;
+var evaluatePlayerTwo;
 
+$(document).ready(function() {
+    database.ref("players").remove();
+
+});
 
 $("#startPlayerOne").on("click", function(event) {
-    var playerOneReady= true;
-    playerOneGame= true;
-    playerTwoGame= false;
+    playerOneReady= true;
+    // var playerOneGame= true;
     database.ref("/players/player1OnLine").set(
         playerOneReady,
     );  
+    $("#playerOneDisplay").css("border-color", "green");
+    $("#playerOneDisplay").css("color", "green");
+    $("#playerTwoDisplay").css("border-color", "red");
+    $("#playerTwoDisplay").css("color", "red");
+    $(".playerChoice2").css("opacity", "0.25");
 });
 
 $("#startPlayerTwo").on("click", function(event) {
-    var playerTwoReady= true;
-    // playerTwoGame= true;
+    // playerTwoReady= true;
+    // playerOneReady = false;
+    // var playerTwoGame= true;
     database.ref("/players/player2OnLine").set(
         playerTwoReady,
     );
 });
 
-$(".playerChoice1").on("click", function(gameOne) {
-    if(playerOneGame===true) {
+$(".playerChoice1").on("click", function(snap) {
+    if(playerOneReady===true) {
     var choicePlayer1 = $(this).text();
     console.log(choicePlayer1);
     database.ref("/players/player1OnLine/player1Choice").set(
         choicePlayer1,
     );
-    playerOneGame = false;
-    playerTwoGame = true;
+    playerOneReady = false;
+    playerTwoReady = true;
     }
 });
 
-$(".playerChoice2").on("click", function(gameTwo) {
-    if(playerTwoGame===true) {
+$(".playerChoice2").on("click", function(snap) {
+    if(playerTwoReady===true) {
     var choicePlayer2 = $(this).text();
     console.log(choicePlayer2);
     database.ref("/players/player2OnLine/player2Choice").set(
         choicePlayer2,
     );
-    playerOneGame = true;
-    playerTwoGame = false;
     }
 });
 
-database.ref("/players").on("value", function(snapshot) {
-    if (snapshot.child("player1OnLine").exists() && snapshot.child("player2OnLine").exists()) {
-        console.log("ok");
-    }
-});
+// database.ref("/players").on("value", function(snapshot) {
+//     evaluatePlayerOne = snapshot.val().player1Choice;
+//     evaluatePlayerTwo = snapshot.val().player2Choice;
+//     console.log(evaluatePlayerOne);
+//     console.log(evaluatePlayerTwo);
+// });
 
+// playersOnLine.on("value", function(snap) {
+//     var evaluatePlayerOne = database.ref("/players/player1OnLine/player1Choice");
+//     var evaluatePlayerTwo = database.ref("/players/player2OnLine/player2Choice");
+//     console.log(snap);
+//     console.log(snap.val());
+//     console.log(evaluatePlayerOne);
+// });
 
+// Aqui empieza codigo de chat ----- //
 $("#send").on('click', function(){
     var message = $("#message").val();  
     console.log(message);  
@@ -73,7 +91,6 @@ $("#send").on('click', function(){
         message: message
     });
     $('#message').val('');
-    // $('#chat').append("<p>"+data.val().message+"</p><br>");
 });
 
 database.ref("messages").on("child_added", function(data){

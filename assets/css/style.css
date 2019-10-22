@@ -1,3 +1,27 @@
 input {
     width: 750px;
 }
+
+#playerOneDisplay {
+    border-width: 30px;
+    border: blue;
+    border-style: double;
+}
+
+#playerTwoDisplay {
+    border-width: 30px;
+    border: blue;
+    border-style: double;
+}
+
+#title {
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: blue;
+    font-weight: bolder;
+}
+
+
+button {
+    margin: 20px;
+}
