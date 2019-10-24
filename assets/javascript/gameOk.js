@@ -39,6 +39,7 @@ $("#startPlayerOne").on("click", function(event) {
     $("#resultPlayer1").empty();
     $("#resultPlayer2").empty();
     database.ref("players/player2OnLine/player2Choice").remove();
+    $(".playerChoice1").css('visibility', 'hidden');
 
     // $("#playerOneDisplay").css("border-color", "green");
     // $("#playerOneDisplay").css("color", "green");
@@ -57,6 +58,8 @@ $("#startPlayerTwo").on("click", function(event) {
     $("#resultPlayer1").empty();
     $("#resultPlayer2").empty();
     database.ref("players/player1OnLine/player1Choice").remove();
+    $(".playerChoice2").css('visibility', 'hidden');
+
 });
 
 $(".playerChoice1").on("click", function(snap) {
@@ -91,8 +94,13 @@ database.ref("/players").on("value", function(snapshot) {
     evaluatePlayerTwo = snapshot.val().player2OnLine.player2Choice;
     console.log("eleccion jugador 1",snapshot.val());
     console.log("eleccion jugador 2", evaluatePlayerTwo);
-    }
+    $(".playerChoice1").css('visibility', 'visible');
+    $(".playerChoice2").css('visibility', 'visible');
+    } 
     if (snapshot.child("player1OnLine/player1Choice").exists() && snapshot.child("player2OnLine/player2Choice").exists()) {
+        $(".playerChoice1").css('visibility', 'hidden');
+        $(".playerChoice2").css('visibility', 'hidden');
+  
         if (evaluatePlayerOne===evaluatePlayerTwo) {
             console.log("Tie");
             tie++;

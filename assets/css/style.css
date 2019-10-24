@@ -28,10 +28,12 @@ button {
 
 .playerChoice1 {
     cursor: pointer;
+    visibility: hidden;
 }
 
 .playerChoice2 {
     cursor: pointer;
+    visibility: hidden;
 }
 
 #score {
