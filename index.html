@@ -32,13 +32,14 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <button id="startPlayerOne"><h1>START</h1></button>
+                <h6>Click on the start button to play</h6>
+                <button type="button" class="btn btn-dark" id="startPlayerOne"><h1>START</h1></button>
+            </div>
+            <div class="col-md-4" id="score">
             </div>
             <div class="col-md-4">
-                <h2>SCORE</h2>
-            </div>
-            <div class="col-md-4">
-                <button id="startPlayerTwo"><h1>START</h1></button>
+                <h6>Click on the start button to play</h6>
+                <button type="button" class="btn btn-dark" id="startPlayerTwo"><h1>START</h1></button>
             </div>
         </div>
 
@@ -50,13 +51,13 @@
                 <h3></h3>
             </div>
             <div class="col-md-1">
-                <h3>Tie</h3>
+                <h4>Tie</h4>
             </div>
             <div class="col-md-1">
-                <h3>Win</h3>
+                <h4>Win</h4>
             </div>
             <div class="col-md-1">
-                <h3>Lose</h3>
+                <h4>Lose</h4>
             </div>
             <div class="col-md-4" id="playerTwoDisplay">
                 <h3>Click on your choice</h3>
@@ -67,7 +68,7 @@
                 <h4 class="playerChoice1" id="choicePlayer1">Rock</h4>
             </div>
             <div class="col-md-1">
-                <h4>Player 1</h4>
+                <h6>Player 1</h6>
             </div>
             <div class="col-md-1">
                 <h4 class="scoreDisplay" id="tieDisplayPlayer1"></h4>
@@ -87,7 +88,7 @@
                 <h4 class="playerChoice1" id="choicePlayer1">Paper</h4>
             </div>
             <div class="col-md-1">
-                <h4>Player 2</h4>
+                <h6>Player 2</h6>
             </div>
             <div class="col-md-1">
                 <h4 class="scoreDisplay" id="tieDisplayPlayer2"></h4>
@@ -106,11 +107,7 @@
             <div class="col-md-4">
                 <h4 class="playerChoice1" id="choicePlayer1">Scissors</h4>
             </div>
-            <div class="col-md-2">
-                <h4 class="playerChoiceTitle">PLAYER 1 CHOICE:</h4>
-            </div>
-            <div class="col-md-2">
-                <h4 class="playerChoiceTitle">PLAYER 2 CHOICE:</h4>
+            <div class="col-md-4">
             </div>
             <div class="col-md-4">
                 <h4 class="playerChoice2" id="choicePlayer2">Scissors</h4>
@@ -149,8 +146,8 @@
         <div class="row">
             <div class="col-md-12" id="chat"></div>
             <input type="text" id="message"><br>
-            <button id="send">Send Msj</button>
-            <button id="remove">Remove All Mesagges</button>
+            <button type="button" class="btn btn-dark" id="send">Send Msj</button>
+            <button type="button" class="btn btn-dark" id="remove">Remove All Mesagges</button>
         </div>
 
 

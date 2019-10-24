@@ -25,3 +25,15 @@ input {
 button {
     margin: 20px;
 }
+
+.playerChoice1 {
+    cursor: pointer;
+}
+
+.playerChoice2 {
+    cursor: pointer;
+}
+
+#score {
+    text-align: center;
+}
